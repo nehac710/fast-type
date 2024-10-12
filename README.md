@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Typing Speed Test
 
-## Getting Started
+A web-based typing speed test application built using **Next.js**, **React**, and **Tailwind CSS**. The app allows users to test their typing speed and accuracy. After the test, users can view their results, including Words Per Minute (WPM) and accuracy, and retake the test as many times as they like.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Fetch random words from an API to type.
+- Countdown timer (60 seconds) for the typing test.
+- Calculates Words Per Minute (WPM) and accuracy.
+- Displays results (WPM and accuracy) after the test.
+- Option to retake the test.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js**: For building the front-end and handling routing.
+- **React**: To create interactive UI components.
+- **Tailwind CSS**: For styling the application.
+- **Axios**: For making API requests to fetch random words.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Demo
 
-## Learn More
+[Link to live demo]
 
-To learn more about Next.js, take a look at the following resources:
+## Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clone this repository:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    git clone https://github.com/your-username/typing-speed-test.git
+    ```
 
-## Deploy on Vercel
+2. Navigate to the project directory:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    cd typing-speed-test
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. Install the dependencies:
+
+    ```bash
+    npm install
+    ```
+
+4. Run the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
+### Key Files
+
+- `src/app/layout.tsx`: Sets up the layout and global styles.
+- `src/app/page.tsx`: Contains the main typing test page that renders the typing test.
+- `src/components/fast-type.js`: Implements the typing test functionality, including timer and word input.
+- `src/components/results.js`: Displays the typing speed test results (WPM, accuracy) and allows users to retake the test.
+- `src/styles/globals.css`: Contains global styles, including custom styles for the app.
+
+## How to Use
+
+1. Open the homepage.
+2. Start typing the displayed words as quickly and accurately as possible.
+3. When the timer ends, the results page will show your typing speed (WPM) and accuracy.
+4. Click "Retake the Test" to try again.
+
+## API
+
+The app uses the following API to fetch random words:
+
+- **Random Word API**: [https://random-word-api.herokuapp.com](https://random-word-api.herokuapp.com
+
+
+
