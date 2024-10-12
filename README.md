@@ -1,6 +1,8 @@
 # Typing Speed Test
 
 A web-based typing speed test application built using **Next.js**, **React**, and **Tailwind CSS**. The app allows users to test their typing speed and accuracy. After the test, users can view their results, including Words Per Minute (WPM) and accuracy, and retake the test as many times as they like.
+## NOTE 
+I started everything from scratch and made a mistake of learning everything first before actually starting the project. I thought that would help me but after I started it 2 days before deadline I realised I should have jumped in first and then learn things which I actually need on the way(hence the project looks very unfinished). I have learnt decent amount of javascript, react and next.js, I only knew html and css before. Please consider that.
 
 ## Features
 
