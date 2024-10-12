@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -11,8 +11,11 @@ const TypingTest = () => {
   const [isTimerActive, setIsTimerActive] = useState(false); // Whether the timer is active
   const [nextBatchWords, setNextBatchWords] = useState([]); // Holds the next batch of words
   const [showResults, setShowResults] = useState(false); // Controls when to show results
-  const [wpm, setWpm] = useState(0); // Words per minute
+  const [grossWpm, setGrossWpm] = useState(0); // Gross words per minute
+  const [netWpm, setNetWpm] = useState(0); // Net words per minute
   const [accuracy, setAccuracy] = useState(0); // Typing accuracy percentage
+  const [totalTypedCharacters, setTotalTypedCharacters] = useState(0); // Total characters typed
+  const [totalErrors, setTotalErrors] = useState(0); // Total uncorrected errors
 
   // Fetch random words from the API
   const fetchWords = async () => {
@@ -30,7 +33,7 @@ const TypingTest = () => {
     const initialFetch = async () => {
       const firstBatch = await fetchWords();
       const secondBatch = await fetchWords();
-      setWords(firstBatch);        // Set the first batch of words
+      setWords(firstBatch); // Set the first batch of words
       setNextBatchWords(secondBatch); // Preload the second batch
     };
     initialFetch();
@@ -43,6 +46,12 @@ const TypingTest = () => {
       if (typedText.trim() !== '') {
         const correctWord = words[currentWordIndex];
         const isCorrect = correctWord === typedText.trim();
+        
+        // Update total errors
+        if (!isCorrect) {
+          setTotalErrors((prev) => prev + 1);
+        }
+
         setTypedWords((prev) => [...prev, { word: typedText.trim(), isCorrect }]);
         setCurrentWordIndex((prev) => prev + 1); // Move to the next word
 
@@ -80,14 +89,18 @@ const TypingTest = () => {
   // Calculate WPM and accuracy after the test ends
   useEffect(() => {
     if (timer === 0) {
-      // Calculate WPM and accuracy
+      // Calculate Gross WPM
+      const totalCharactersTyped = typedWords.reduce((sum, word) => sum + word.word.length, 0);
+      const calculatedGrossWpm = (totalCharactersTyped / 5) / 1; // 1 minute since timer is 60 seconds
+      setGrossWpm(calculatedGrossWpm.toFixed(2));
+
+      // Calculate Net WPM and Accuracy
       const correctWords = typedWords.filter(word => word.isCorrect).length;
       const totalTypedWords = typedWords.length;
-
-      const calculatedWpm = (correctWords / (60 / 60)).toFixed(2); // Assuming 60 seconds timer
+      const calculatedNetWpm = calculatedGrossWpm - (totalErrors / 1); // 1 minute
       const calculatedAccuracy = ((correctWords / totalTypedWords) * 100).toFixed(2);
 
-      setWpm(calculatedWpm);
+      setNetWpm(calculatedNetWpm.toFixed(2));
       setAccuracy(calculatedAccuracy);
 
       // Show results instead of typing test
@@ -172,23 +185,24 @@ const TypingTest = () => {
       {showResults ? (
         // Display results after timer ends
         <>
-        <div className='header'>
+          <div className='header'>
             <h1>Fast Type</h1>
           </div>
 
-        <div className='results'>
-          <h1>Typing Test Results</h1>
-          <div className='result-display'>
-          <p>Speed: {wpm} WPM</p>
-          <p>Accuracy: {accuracy}%</p>
+          <div className='results'>
+            <h1>Typing Test Results</h1>
+            <div className='result-display'>
+              <p>Gross Speed: {grossWpm} WPM</p>
+              <p>Net Speed: {netWpm} WPM</p>
+              <p>Accuracy: {accuracy}%</p>
+            </div>
+            
+            <button onClick={() => window.location.reload()}>Retake the Test</button>
           </div>
-          
-          <button onClick={() => window.location.reload()}>Retake the Test</button>
-        </div>
         </>
       ) : (
         // Display typing test while timer is running
-         <>
+        <>
           <div className='header'>
             <h1>Fast Type</h1>
           </div>
@@ -213,6 +227,7 @@ const TypingTest = () => {
 };
 
 export default TypingTest;
+
 
 
 
