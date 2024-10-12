@@ -26,7 +26,7 @@ A web-based typing speed test application built using **Next.js**, **React**, an
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/your-username/typing-speed-test.git
+    git clone https://github.com/nehac710/fast-type.git
     ```
 
 2. Navigate to the project directory:
