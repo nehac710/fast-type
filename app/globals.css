@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #EEEEEE;
+  --foreground: #201E43;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #201E43;
+    --foreground: #EEEEEE;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* General Page Styles */
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+.header{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+}
+
+
+
+/* Centering the Heading with Padding */
+h1 {
+  text-align: center;
+  padding-top: 10px; /* Padding above the heading */
+  margin-bottom: 10px; /* Space below the heading */
+  margin-top: 10%;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  
+}
+
+/* Styling the Timer */
+.timer {
+  top: 100px; /* Below the heading */
+  left: 200px; /* Align on the left */
+  display: flex;
+  margin-left: 10%;
+  font-size: 1.5rem;
+  color: #555;
+}
+
+/* Container for Typing Area */
+.typing-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%; /* Width of the typing area */
+  max-width: 900px;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+  margin-left: 10%;
+  margin-bottom: 20%;
+}
+
+/* Increasing Font Size of Fetched Text */
+.fetched-words {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Additional Styling for Instructions */
+.start-typing {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/*results*/
+.results p{
+   color: #333;
+   font-family:monospace;
+   font-size: 2rem;
+}
+
+.results button{
+  color:#EEEEEE;
+  background-color: #555;
+  padding: 5px;
+  border: #333,solid,1px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.results .heading{
+  margin-bottom: 20%;
+}
+
+
