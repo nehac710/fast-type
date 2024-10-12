@@ -32,7 +32,7 @@ A web-based typing speed test application built using **Next.js**, **React**, an
 2. Navigate to the project directory:
 
     ```bash
-    cd typing-speed-test
+    cd fast-type
     ```
 
 3. Install the dependencies:
